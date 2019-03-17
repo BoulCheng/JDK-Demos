@@ -16,6 +16,7 @@ public class DemoCopyOnWriteArrayList {
 
         copyOnWriteArrayList.add("1");
         copyOnWriteArrayList.remove("1");
+        copyOnWriteArrayList.addIfAbsent("2");
 
         copyOnWriteArrayList.get(1);
 
