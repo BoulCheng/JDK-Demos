@@ -1,4 +1,4 @@
-package com.zlb.locks;
+package com.zlb.concurrent.locks;
 
 /**
  * @author Yuanming Tao
