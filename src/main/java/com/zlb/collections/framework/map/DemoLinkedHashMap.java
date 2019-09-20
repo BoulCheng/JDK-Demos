@@ -31,6 +31,8 @@ public class DemoLinkedHashMap {
 
         testAccessOrder();
 
+        testEvict();
+
     }
 
 
@@ -49,6 +51,40 @@ public class DemoLinkedHashMap {
         for (Iterator<String> iterator = map.values().iterator(); iterator.hasNext(); ) {
             String name = (String) iterator.next();
             System.out.print(name);
+        }
+    }
+
+    /**
+     * 未test
+     */
+    private static void testEvict() {
+        Map<String, String> map = new LinkedHashMap<>();
+        map.put("1", "a");
+        map.put("2", "b");
+        map.put("3", "c");
+        map.put("4", "e");
+        map.put("5", "d");
+
+
+        EvictedLinkedHashMap evictedLinkedHashMap = new EvictedLinkedHashMap(map);
+        evictedLinkedHashMap.put("6", "d");
+        System.out.println(evictedLinkedHashMap);
+
+    }
+
+    static class EvictedLinkedHashMap<K, V> extends LinkedHashMap {
+
+        public EvictedLinkedHashMap(Map m) {
+            super(m);
+        }
+
+        public EvictedLinkedHashMap(int initialCapacity, float loadFactor, boolean accessOrder) {
+            super(initialCapacity, loadFactor, accessOrder);
+        }
+
+        @Override
+        protected boolean removeEldestEntry(Map.Entry eldest) {
+            return true;
         }
     }
 }

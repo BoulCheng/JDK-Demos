@@ -11,6 +11,6 @@ public class RealSubject implements Subject{
 
     @Override
     public void hello() {
-        System.out.println("hello");
+        System.out.println("real subject execute  hello");
     }
 }

@@ -17,6 +17,22 @@ public class DemoObjectWaitNotify {
 
         Object lock = new Object();
 
+        try {
+            //获得该对象锁才能调用wait
+            lock.wait();
+        } catch (IllegalMonitorStateException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            //获得该对象锁才能调用notify
+            lock.notify();
+        } catch (IllegalMonitorStateException e) {
+            e.printStackTrace();
+        }
+
         new Thread(new RunnableA(lock)).start();
 
         try {
